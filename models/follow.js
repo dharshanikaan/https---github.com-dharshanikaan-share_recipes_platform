@@ -19,7 +19,8 @@ const Follow = sequelize.define('Follow', {
     },
 });
 
-User.belongsToMany(User, { as: 'Followers', through: Follow, foreignKey: 'follower_id' });
-User.belongsToMany(User, { as: 'Followed', through: Follow, foreignKey: 'followed_id' });
+// Define associations
+User.belongsToMany(User, { as: 'Followers', through: Follow, foreignKey: 'followerId' });
+User.belongsToMany(User, { as: 'Followed', through: Follow, foreignKey: 'followedId' });
 
 module.exports = Follow;

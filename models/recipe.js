@@ -1,7 +1,7 @@
+// models/recipe.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../utils/database');
-const User = require('./user');
-const Review = require('./review');
+const User = require('./user');  // User model to be associated with Recipe
 
 const Recipe = sequelize.define('Recipe', {
     id: {
@@ -37,10 +37,7 @@ const Recipe = sequelize.define('Recipe', {
     timestamps: true,
 });
 
-// Relationships
-Recipe.belongsTo(User, { foreignKey: 'user_id' });
-Recipe.hasMany(Review, { foreignKey: 'recipe_id' });
-User.hasMany(Recipe, { foreignKey: 'user_id' });
+// Association: Recipe belongs to User
+Recipe.belongsTo(User, { foreignKey: 'userId' });
 
 module.exports = Recipe;
-

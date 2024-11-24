@@ -1,5 +1,6 @@
-const { Recipe, User, Review } = require('../models');
-
+const User = require('../models/user');
+const Recipe = require('../models/recipe');
+const Review = require('../models/review');
 // Create a new recipe
 exports.createRecipe = async (req, res) => {
     const { title, ingredients, instructions, cooking_time, servings, image_url } = req.body;

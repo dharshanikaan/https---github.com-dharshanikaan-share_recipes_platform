@@ -1,11 +1,18 @@
+
 const dotenv = require("dotenv");
-dotenv.config({ path: '../expenseapppassword/.env' });
-const { Sequelize } = require('sequelize');
-
-
+dotenv.config({ path: '../expenseapppassword/.env' }); // This will load the environment variables from the custom `.env` file
+const { Sequelize, DataTypes } = require("sequelize");
+// Create a new Sequelize instance using the environment variables
 const sequelize = new Sequelize(
-    `mysql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:3306/${process.env.DB_NAME}`,
-    { dialect: 'mysql' }
+  process.env.DB_NAME,         // Database name
+  process.env.DB_USERNAME,     // Database user
+  process.env.DB_PASSWORD,     // Database password
+  {
+    host: process.env.DB_HOST, // Database host (localhost)
+    dialect: "mysql",          // Dialect (MySQL)
+    port: process.env.DB_PORT, // Port (default 3306 or from .env)
+    logging: false,            // Disable logging (optional)
+  }
 );
 
 module.exports = sequelize;

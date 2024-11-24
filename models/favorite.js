@@ -20,7 +20,8 @@ const Favorite = sequelize.define('Favorite', {
     },
 });
 
-User.belongsToMany(Recipe, { through: Favorite, foreignKey: 'user_id' });
-Recipe.belongsToMany(User, { through: Favorite, foreignKey: 'recipe_id' });
+// Define associations
+User.belongsToMany(Recipe, { through: Favorite, foreignKey: 'userId' });
+Recipe.belongsToMany(User, { through: Favorite, foreignKey: 'recipeId' });
 
 module.exports = Favorite;

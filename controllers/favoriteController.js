@@ -1,4 +1,6 @@
-const { Favorite, Recipe, User } = require('../models');
+const User = require('../models/user');
+const Recipe = require('../models/recipe');
+const Favorite = require('../models/favorite');
 
 // Add recipe to favorites
 exports.addFavorite = async (req, res) => {
