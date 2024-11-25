@@ -3,34 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipes - Recipe App</title>
+    <title>Recipes - RecipeApp</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.3/dist/sweetalert2.min.css" rel="stylesheet">
 </head>
 <body>
+
     <header>
-        <h1>Recipe App - Recipes</h1>
-        <nav>
-            <ul>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="recipes.html">Recipes</a></li>
-                <li><a href="favorites.html">Favorites</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="review.html">Review</a></li>
-            </ul>
-        </nav>
+        <div class="logo">RecipeApp</div>
+        <div class="auth-links">
+            <a href="register.html">Register</a> | <a href="login.html">Login</a>
+        </div>
     </header>
 
     <main>
-        <section id="recipe-list">
-            <!-- Recipes will be loaded here -->
-        </section>
+        <div class="recipe-container">
+            <h1>Recipes</h1>
+            <div class="recipe-actions">
+                <button id="createRecipeBtn" class="btn">Create Recipe</button>
+            </div>
+            <div id="recipeList" class="recipe-list">
+                <!-- Recipes will be loaded here dynamically -->
+            </div>
+        </div>
+
+        <div id="createRecipeModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" id="closeModalBtn">&times;</span>
+                <h2>Create New Recipe</h2>
+                <form id="createRecipeForm">
+                    <input type="text" id="recipeTitle" placeholder="Recipe Title" required>
+                    <textarea id="recipeIngredients" placeholder="Ingredients" required></textarea>
+                    <textarea id="recipeInstructions" placeholder="Instructions" required></textarea>
+                    <input type="number" id="cookingTime" placeholder="Cooking Time (in minutes)" required>
+                    <input type="number" id="servings" placeholder="Servings" required>
+                    <input type="url" id="imageUrl" placeholder="Image URL (optional)">
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+            </div>
+        </div>
+
     </main>
 
-    <footer>
-        <p>&copy; 2024 Recipe App</p>
-    </footer>
-
-    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.3/dist/sweetalert2.min.js"></script>
+    <script src="recipes.js"></script>
 </body>
 </html>

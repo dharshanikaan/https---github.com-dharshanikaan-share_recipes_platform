@@ -1,36 +1,39 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path');  // Import the path module
+const path = require('path');
 
-const sequelize = require('./utils/database');  // Correct import of sequelize instance
+const sequelize = require('./utils/database'); 
 const authRoutes = require('./routes/userRoutes');
 const recipeRoutes = require('./routes/recipeRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 
-// Importing models from centralized file
 const { User, Recipe, Review, Favorite, Follow } = require('./models');
 
 // Initialize the app
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Serve static files (images, css, js) from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/api/signup', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'register.html'));  // Serve auth.html
-});
-
-app.get('/api/recipes', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'recipes.html'));  // Serve recipes.html
-});
-
-app.get('/api/reviews', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'reviews.html'));  // Serve reviews.html
-});
-// Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/recipes', recipeRoutes);
+// Routes for the application (only API routes for business logic)
+app.use('/', authRoutes);
+app.use('/api', recipeRoutes);  // API prefix for recipe routes
 app.use('/api/reviews', reviewRoutes);
+
+// Serve the home page, login, and register pages as static HTML files
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'home.html'));
+});
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
+
+app.get('/register', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'register.html'));
+});
 
 // Sync the database after all models are loaded
 sequelize.sync({ force: false }).then(() => {

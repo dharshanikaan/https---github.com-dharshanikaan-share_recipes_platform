@@ -3,41 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Recipe App</title>
+    <title>Login</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
     <header>
-        <h1>Recipe App - Login</h1>
-        <nav>
-            <ul>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="recipes.html">Recipes</a></li>
-                <li><a href="favorites.html">Favorites</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="review.html">Review</a></li>
-            </ul>
-        </nav>
+        <div class="logo">RecipeApp</div>
+        <div class="auth-links">
+            <a href="register.html">Register</a> | <a href="home.html">Home</a>
+        </div>
     </header>
 
     <main>
-        <section id="login-section">
-            <h2>Login</h2>
-            <form id="login-form">
-                <label for="email">Email:</label>
-                <input type="email" id="email" required>
-                <label for="password">Password:</label>
-                <input type="password" id="password" required>
-                <button type="submit">Login</button>
-            </form>
-        </section>
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+            <button type="submit">Login</button>
+        </form>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Recipe App</p>
-    </footer>
-
-    <script src="index.js"></script>
+    <script src="login.js"></script>
 </body>
 </html>
+

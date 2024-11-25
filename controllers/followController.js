@@ -1,4 +1,4 @@
-
+// controllers/followController.js
 const User = require('../models/user');
 const Follow = require('../models/follow');
 

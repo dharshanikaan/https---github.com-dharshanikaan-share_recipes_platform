@@ -1,3 +1,4 @@
+// controllers/favoriteController.js
 const User = require('../models/user');
 const Recipe = require('../models/recipe');
 const Favorite = require('../models/favorite');
